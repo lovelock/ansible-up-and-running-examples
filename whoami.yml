@@ -1,0 +1,7 @@
+- name: show rewturn value of command module
+  hosts: vagrant1
+  tasks:
+      - name: capture output of id command
+        command: id -un
+        register: login
+      - debug: var=login
