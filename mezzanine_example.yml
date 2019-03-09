@@ -1,0 +1,28 @@
+vars:
+    user: "{{ ansible_user }}"
+    proj_app: mezzanine_example
+    proj_name: "{{ proj_app }}"
+    venv_home: "{{ ansible_env.HOME }}/.virtualenvs"
+    venv_path: "{{ venv_home }}/{{proj_name }}"
+    proj_path: "{{ ansible_env.HOME }}/mezzanine/{{ proj_name }}"
+    settings_path: "{{ proj_path }}/{{ proj_name }}"
+    reqs_path: requirements.txt
+    manage: "{{ python }} {{ proj_path }}/manage.py"
+    live_hostname: 192.168.33.10.xip.io
+    domains:
+        - 192.168.33.10.xip.io
+        - www.192.168.33.10.xip.io
+    repo_url: git@github.com:ansiblebook/mezzanine_example.git
+    locale: en_US.UTF-8
+    conf_path: /etc/nginx/conf
+    tls_enabled: True
+    python: "{{ venv_path }}/bin/python"
+    database_name: "{{ proj_name }}"
+    database_user: "{{ proj_name }}"
+    database_host: localhost
+    database_port: 5432
+    gunicorn_procname: gunicorn_mezzanine
+    num_workers: "multiprocessing.cpu_count() * 2 + 1"
+vars_files:
+    - secrets.yml
+
