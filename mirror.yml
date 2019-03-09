@@ -1,0 +1,6 @@
+- name: use mirrors.ustc.edu.cn as mirror
+  hosts: all
+  become: True
+  tasks:
+      - name: do replace
+        command: sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
